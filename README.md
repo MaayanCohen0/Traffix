@@ -127,3 +127,14 @@ Interactive Filtering: Filter all charts and tables by specific Agent or custom 
 Reset Database: A built-in administrative button to wipe and rebuild the database schema. Includes a safety confirmation dialog to prevent accidental data loss.
 
 Professional UI: Rounded "capsule" filter box, responsive grid layout, and custom-designed scrollbars.
+
+
+
+
+
+<img width="1886" height="659" alt="image" src="https://github.com/user-attachments/assets/1bd8ebfa-58f0-4d16-ac5d-2af5d6372bb2" />
+
+<img width="1890" height="546" alt="image" src="https://github.com/user-attachments/assets/80e7ac37-070f-4d89-a8bd-511ae68bce6d" />
+
+<img width="1875" height="461" alt="image" src="https://github.com/user-attachments/assets/630d10d0-9e63-4235-9908-b4f669016df2" />
+
