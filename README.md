@@ -43,7 +43,7 @@
 
 ### 1. Clone the Repository
 ```bash
-git clone [https://github.com/MaayanCohen0/traffix.git](https://github.com/MaayanCohen0/traffix.git)
+git clone https://github.com/MaayanCohen0/traffix.git
 cd traffix
 ```
 ### 2. Environment Configuration
