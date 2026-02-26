@@ -1,0 +1,160 @@
+/* --- Base Styles --- */
+body { 
+    background: #0f172a; 
+    color: #f1f5f9; 
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+    padding: 20px; 
+    margin: 0; 
+    line-height: 1.5;
+}
+
+header { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 10px 20px 30px 20px; 
+}
+
+/* --- Filter Box & Controls --- */
+.filter-box {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #1e293b;
+    padding: 8px 20px;
+    border-radius: 50px; /* מראה הקפסולה המודרני */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    border: 1px solid #334155;
+}
+
+.filter-box label {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.filter-box select {
+    background-color: #0f172a;
+    color: #f1f5f9;
+    border: 1px solid #475569;
+    padding: 6px 12px;
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+}
+
+.filter-box select:hover {
+    border-color: #38bdf8;
+    background-color: #1e293b;
+}
+
+/* --- Buttons --- */
+.reset-btn {
+    background: linear-gradient(135deg, #7f1d1d 0%, #450a0a 100%);
+    color: white;
+    border: 1px solid #991b1b;
+    padding: 8px 18px;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.reset-btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.2);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.4);
+}
+
+.reset-btn:active {
+    transform: translateY(0);
+}
+
+/* --- Dashboard Grid & Cards --- */
+.container { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+    gap: 20px; 
+}
+
+.card { 
+    background: #1e293b; 
+    padding: 20px; 
+    border-radius: 12px; 
+    border: 1px solid #334155;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+
+.full-width { 
+    grid-column: 1 / -1; 
+}
+
+/* --- Logs & Streaming --- */
+#log-container { 
+    height: 250px; 
+    overflow-y: auto; 
+    background: #020617; 
+    padding: 15px; 
+    border-radius: 8px; 
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 0.9rem;
+    border: 1px solid #1e293b;
+}
+
+.log-entry { 
+    border-bottom: 1px solid #1e293b; 
+    padding: 8px 0; 
+    color: #cbd5e1;
+}
+
+.alert-entry { 
+    background: rgba(239, 68, 68, 0.1); 
+    border-left: 4px solid #ef4444; 
+    padding-left: 10px; 
+    color: #fca5a5;
+}
+
+/* --- Security Alerts --- */
+.security-banner {
+    background-color: #7f1d1d;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-bottom: 4px solid #f87171;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: opacity 1s ease;
+    animation: pulse 1.5s infinite;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes pulse {
+    0% { background-color: #7f1d1d; }
+    50% { background-color: #b91c1c; }
+    100% { background-color: #7f1d1d; }
+}
+
+/* --- Custom Scrollbar --- */
+#log-container::-webkit-scrollbar {
+    width: 8px;
+}
+#log-container::-webkit-scrollbar-track {
+    background: #020617;
+}
+#log-container::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 10px;
+}
+#log-container::-webkit-scrollbar-thumb:hover {
+    background: #475569;
+}

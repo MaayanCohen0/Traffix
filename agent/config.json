@@ -1,0 +1,7 @@
+{
+    "settings": {
+        "interface": null,
+        "sniff_filter": "ip and (tcp or udp)",
+        "dns_lookup": true
+    }
+}
