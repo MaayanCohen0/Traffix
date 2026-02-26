@@ -1,6 +1,6 @@
 # 🛡️ TRAFFIX: Real-Time Network Security & Traffic Monitor
 
-**Traffix** is a distributed network monitoring system designed to provide deep visibility into endpoint traffic. It consists of a lightweight Python-based **Agent** that captures live packets and a centralized **Manager** (FastAPI) that processes, alerts, and visualizes the data in a modern, interactive dashboard.
+[cite_start]**Traffix** is a high-performance, distributed network monitoring system designed for deep visibility into endpoint traffic. [cite_start]It features a lightweight Python-based **Agent** for packet sniffing and a centralized **FastAPI Manager** for real-time analysis, security alerting, and interactive visualization.
 
 
 
@@ -8,51 +8,57 @@
 
 ## 🚀 Key Features
 
-### 1. **Live Traffic Streaming**
-* **Real-time Visualization:** Packets are captured and broadcasted instantly to the dashboard via WebSockets.
-* **Process Identification:** Automatically maps network traffic to the specific software (e.g., Chrome, Slack, Discord) and Process ID (PID) generating it.
+### 1. **Live Traffic Analysis**
+* [cite_start]**Real-time Streaming:** Packets are captured and broadcasted instantly to the dashboard via WebSockets.
+* [cite_start]**Process Mapping:** Automatically identifies which local software (e.g., Chrome, Discord) is generating specific network traffic using `psutil`.
 
-### 2. **Security & Threat Detection**
-* **Port Scan Detection:** Heuristic engine that identifies and alerts when an endpoint is being scanned (Sequential port access detection).
-* **Blacklist Monitoring:** Dynamic IP blacklisting. Alerts are triggered immediately if an agent attempts to communicate with a malicious IP.
-* **Live Alerts:** High-visibility pulsing UI banners for critical security events.
+### 2. **Advanced Security Detection**
+* [cite_start]**Port Scan Identification:** Heuristic engine that detects sequential port access patterns to identify scanning attempts.
+* [cite_start]**Dynamic Blacklisting:** Real-time alerts when an internal agent communicates with known malicious IPs defined in `config.json`.
+* [cite_start]**Security Banners:** Instant visual alerts on the dashboard for critical security events.
 
-### 3. **Geographical Intelligence**
-* **Global Map Pings:** Interactive Leaflet.js map showing real-time geographical destinations of outgoing traffic using dark-mode aesthetics.
-* **Country Distribution:** Statistical breakdown of traffic by country to identify suspicious data exfiltration.
-
-### 4. **Advanced Analytics & Forensic Tools**
-* **Timeframe Filtering:** Investigate incidents using granular time filters (from the last 15 minutes to the past year) powered by SQL indexing.
-* **Bandwidth Analysis:** Identify "Data Hogs" with MegaByte (MB) usage tracking per application.
-* **Top Processes Table:** Detailed forensic table ranking the most active processes on the network with visual activity bars.
+### 3. **Geographical & Forensic Intelligence**
+* [cite_start]**Interactive Map:** Live Leaflet.js map showing geographical destinations of outgoing traffic using dark-mode aesthetics.
+* [cite_start]**Granular Filtering:** Investigate incidents using time-based filters (15m to 1y) powered by optimized PostgreSQL indexing.
+* [cite_start]**Bandwidth Monitoring:** Visual breakdown of data consumption (MB) per application.
 
 ---
 
-## 🏗️ Architecture
+## 🏗️ Architecture & Tech Stack
 
 
 
-* **Agent (Python):** Uses `Scapy` for packet sniffing and `psutil` for process mapping. Sends data via UDP to minimize system overhead.
-* **Manager (FastAPI):** High-performance asynchronous backend with a lifespan-managed event loop for real-time broadcasting.
-* **Database (PostgreSQL):** Optimized with SQL Indexes on `timestamp` and `agent_id` for lightning-fast historical queries.
-* **Frontend (JS/Chart.js/Leaflet):** Modern Dark-Mode UI designed for SOC (Security Operations Center) environments.
+* [cite_start]**Backend:** FastAPI (Python 3.12) with asynchronous WebSocket broadcasting.
+* [cite_start]**Agent:** Scapy for low-level packet sniffing and multi-threading for non-blocking processing.
+* **Database:** PostgreSQL with SQLAlchemy ORM. [cite_start]Optimized with **thread-locks** to prevent race conditions during DB resets.
+* [cite_start]**Frontend:** Modern Dark-Mode UI using Chart.js, Leaflet.js, and Vanilla JavaScript.
 
 ---
 
 ## 🛠️ Installation & Setup
 
 ### Prerequisites
-* **Python 3.12+**
-* **PostgreSQL**
-* **Npcap** (Required for Windows users to enable Scapy packet sniffing)
+* [cite_start]**Python 3.12+** 
+* [cite_start]**PostgreSQL Server** 
+* [cite_start]**Npcap** (Required for Windows users to enable Scapy sniffing) 
 
 ### 1. Clone the Repository
 ```bash
 git clone [https://github.com/your-username/traffix.git](https://github.com/your-username/traffix.git)
 cd traffix
 ```
+### 2. Environment Configuration
+Create a .env file in the manager/ directory based on .env.example:
+```bash
+DATABASE_URL=postgresql://user:password@localhost:5432/traffix_db
+```
 
-### 2. Install Dependencies
+Create a .env file in the agent/ directory based on .env.example:
+```bash
+MANAGER_IP=127.0.0.1
+MANAGER_PORT=2053
+```
+### 3. Install Dependencies
 Install the required Python libraries for both the Manager (Server) and the Agent (Collector).
 
 **For the Manager:**
@@ -60,7 +66,6 @@ Install the required Python libraries for both the Manager (Server) and the Agen
 cd manager
 pip install -r requirements_manager.txt
 ```
-
 
 **For the Agent::**
 ```bash
@@ -75,16 +80,19 @@ Before running the application, you must manually create the database in Postgre
 CREATE DATABASE traffix_db;
 ```
 
-### 4. Configure & Initialize
-Update the DATABASE_URL in manager/database.py with your PostgreSQL credentials:
+### 4. Database Initialization
+Create the database in PostgreSQL:
 ```bash
-# Replace 'username' and 'password' with your real PostgreSQL credentials
-DATABASE_URL = "postgresql://username:password@localhost:5432/traffix_db"
+CREATE DATABASE traffix_db;
+```
+Then run the initialization script to generate the schema:
+```bash
+python manager/database.py
 ```
 
 ## 🚦 How to Run
 ###Step 1: Start the Manager
-The manager handles the API, database storage, and the real-time Dashboard.
+The manager handles the API, database storage, and serves the dashboard.
 
 ```bash
 cd manager
@@ -92,34 +100,21 @@ python manager.py
 ```
 
 ### Step 2: Start the Agent
-The agent must be run with Administrative/Root privileges to sniff network traffic.
-
-#### On Windows (Run CMD/PowerShell as Admin):
+The agent requires administrative privileges to sniff network interfaces.
 
 ```bash
 cd agent
 python agent.py
 ```
 
-#### On Linux/macOS:
-
-```bash
-cd agent
-sudo python3 agent.py
-```
-
 ### Step 3: Access the Dashboard
-Once both are running, open your web browser and navigate to:
-http://localhost:8000/dashboard/index.html (or open the index.html file directly).
+Once the Manager is running, open your browser and navigate to:
+http://localhost:8000/dashboard/
 
-## ⚙️ Dynamic Configuration (config.json)
-The system supports Hot-Reloading—updates to this file are applied instantly without restarting the server:
+## ⚙️ Administrative Controls
+Hot-Reloading Config: The config.json file supports live updates for blacklists and agent names without restarting the server.
 
-agent_names: Map IP addresses to workers names.
-
-blacklist_ips: List of restricted IPs that trigger immediate security alerts.
-
-server: Host and port configuration for the UDP listener.
+Safe Database Reset: A dedicated admin button to clear logs while preserving the database schema, protected by thread-level synchronization to avoid UniqueViolation errors.
 
 ## 🖥️ UI & Administrative Controls
 Interactive Filtering: Filter all charts and tables by specific Agent or custom Time Range (e.g., Last 15m, 24h, 1y).
