@@ -58,25 +58,28 @@ Install the required Python libraries for both the Manager (Server) and the Agen
 ```bash
 cd manager
 pip install -r requirements_manager.txt
-
+```
 
 
 **For the Agent::**
 ```bash
 cd agent
 pip install -r requirements_agent.txt
+```
 
 ###3. Create the Database (Required)
 Before running the application, you must manually create the database in PostgreSQL. You can do this via pgAdmin or the psql command line
 ```bash
 -- Run this command in your PostgreSQL Query Tool
 CREATE DATABASE traffix_db;
+```
 
 ###4. Configure & Initialize
 Update the DATABASE_URL in manager/database.py with your PostgreSQL credentials:
 ```bash
 # Replace 'username' and 'password' with your real PostgreSQL credentials
 DATABASE_URL = "postgresql://username:password@localhost:5432/traffix_db"
+```
 
 ## 🚦 How to Run
 ###Step 1: Start the Manager
@@ -85,6 +88,7 @@ The manager handles the API, database storage, and the real-time Dashboard.
 ```bash
 cd manager
 python manager.py
+```
 
 ###Step 2: Start the Agent
 The agent must be run with Administrative/Root privileges to sniff network traffic.
@@ -94,12 +98,14 @@ The agent must be run with Administrative/Root privileges to sniff network traff
 ```bash
 cd agent
 python agent.py
+```
 
 ####On Linux/macOS:
 
 ```bash
 cd agent
 sudo python3 agent.py
+```
 
 ###Step 3: Access the Dashboard
 Once both are running, open your web browser and navigate to:
