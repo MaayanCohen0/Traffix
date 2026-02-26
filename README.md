@@ -68,6 +68,7 @@ pip install -r requirements_manager.txt
 
 **For the Agent::**
 ```bash
+cd ..
 cd agent
 pip install -r requirements_agent.txt
 ```
