@@ -77,7 +77,6 @@ CREATE DATABASE traffix_db;
 ```
 Then run the initialization script to generate the schema:
 ```bash
-cd ..
 python manager/database.py
 ```
 
