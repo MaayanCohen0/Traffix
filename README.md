@@ -62,15 +62,12 @@ Install the required Python libraries for both the Manager (Server) and the Agen
 
 **For the Manager:**
 ```bash
-cd manager
-pip install -r requirements_manager.txt
+pip install -r manager/requirements_manager.txt
 ```
 
 **For the Agent::**
 ```bash
-cd ..
-cd agent
-pip install -r requirements_agent.txt
+pip install -r agent/requirements_agent.txt
 ```
 
 ### 4. Database Initialization
@@ -89,16 +86,14 @@ python manager/database.py
 The manager handles the API, database storage, and serves the dashboard.
 
 ```bash
-python manager.py
+python manager/manager.py
 ```
 
 ### Step 2: Start the Agent
 The agent requires administrative privileges to sniff network interfaces.
 
 ```bash
-cd ..
-cd agent
-python agent.py
+python agent/agent.py
 ```
 
 ### Step 3: Access the Dashboard
