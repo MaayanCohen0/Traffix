@@ -50,6 +50,7 @@
 ```bash
 git clone [https://github.com/your-username/traffix.git](https://github.com/your-username/traffix.git)
 cd traffix
+```
 
 ### 2. Install Dependencies
 Install the required Python libraries for both the Manager (Server) and the Agent (Collector).
@@ -67,14 +68,14 @@ cd agent
 pip install -r requirements_agent.txt
 ```
 
-###3. Create the Database (Required)
+### 3. Create the Database (Required)
 Before running the application, you must manually create the database in PostgreSQL. You can do this via pgAdmin or the psql command line
 ```bash
 -- Run this command in your PostgreSQL Query Tool
 CREATE DATABASE traffix_db;
 ```
 
-###4. Configure & Initialize
+### 4. Configure & Initialize
 Update the DATABASE_URL in manager/database.py with your PostgreSQL credentials:
 ```bash
 # Replace 'username' and 'password' with your real PostgreSQL credentials
@@ -90,24 +91,24 @@ cd manager
 python manager.py
 ```
 
-###Step 2: Start the Agent
+### Step 2: Start the Agent
 The agent must be run with Administrative/Root privileges to sniff network traffic.
 
-####On Windows (Run CMD/PowerShell as Admin):
+#### On Windows (Run CMD/PowerShell as Admin):
 
 ```bash
 cd agent
 python agent.py
 ```
 
-####On Linux/macOS:
+#### On Linux/macOS:
 
 ```bash
 cd agent
 sudo python3 agent.py
 ```
 
-###Step 3: Access the Dashboard
+### Step 3: Access the Dashboard
 Once both are running, open your web browser and navigate to:
 http://localhost:8000/dashboard/index.html (or open the index.html file directly).
 
