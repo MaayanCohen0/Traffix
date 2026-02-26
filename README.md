@@ -72,13 +72,6 @@ cd agent
 pip install -r requirements_agent.txt
 ```
 
-### 3. Create the Database (Required)
-Before running the application, you must manually create the database in PostgreSQL. You can do this via pgAdmin or the psql command line
-```bash
--- Run this command in your PostgreSQL Query Tool
-CREATE DATABASE traffix_db;
-```
-
 ### 4. Database Initialization
 Create the database in PostgreSQL:
 ```bash
