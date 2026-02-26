@@ -1,7 +1,5 @@
 # 🛡️ TRAFFIX: Real-Time Network Security & Traffic Monitor
 
-![TRAFFIX Dynamic Dashboard Showcase](<img width="1053" height="589" alt="image" src="https://github.com/user-attachments/assets/60de0e9b-215f-4d77-9e2a-ba221169fc60" />
-)
 
 **Traffix** is a high-performance, distributed network monitoring system designed for deep visibility into endpoint traffic. It features a lightweight Python-based **Agent** for packet sniffing and a centralized **FastAPI Manager** for real-time analysis, security alerting, and interactive visualization.
 
