@@ -80,6 +80,7 @@ CREATE DATABASE traffix_db;
 ```
 Then run the initialization script to generate the schema:
 ```bash
+cd ..
 python manager/database.py
 ```
 
@@ -88,7 +89,6 @@ python manager/database.py
 The manager handles the API, database storage, and serves the dashboard.
 
 ```bash
-cd manager
 python manager.py
 ```
 
@@ -96,6 +96,7 @@ python manager.py
 The agent requires administrative privileges to sniff network interfaces.
 
 ```bash
+cd ..
 cd agent
 python agent.py
 ```
