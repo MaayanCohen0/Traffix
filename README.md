@@ -50,3 +50,73 @@
 ```bash
 git clone [https://github.com/your-username/traffix.git](https://github.com/your-username/traffix.git)
 cd traffix
+
+### 2. Install Dependencies
+Install the required Python libraries for both the Manager (Server) and the Agent (Collector).
+
+**For the Manager:**
+```bash
+cd manager
+pip install -r requirements_manager.txt
+
+
+
+**For the Agent::**
+```bash
+cd agent
+pip install -r requirements_agent.txt
+
+###3. Create the Database (Required)
+Before running the application, you must manually create the database in PostgreSQL. You can do this via pgAdmin or the psql command line
+```bash
+-- Run this command in your PostgreSQL Query Tool
+CREATE DATABASE traffix_db;
+
+###4. Configure & Initialize
+Update the DATABASE_URL in manager/database.py with your PostgreSQL credentials:
+```bash
+# Replace 'username' and 'password' with your real PostgreSQL credentials
+DATABASE_URL = "postgresql://username:password@localhost:5432/traffix_db"
+
+## 🚦 How to Run
+###Step 1: Start the Manager
+The manager handles the API, database storage, and the real-time Dashboard.
+
+```bash
+cd manager
+python manager.py
+
+###Step 2: Start the Agent
+The agent must be run with Administrative/Root privileges to sniff network traffic.
+
+####On Windows (Run CMD/PowerShell as Admin):
+
+```bash
+cd agent
+python agent.py
+
+####On Linux/macOS:
+
+```bash
+cd agent
+sudo python3 agent.py
+
+###Step 3: Access the Dashboard
+Once both are running, open your web browser and navigate to:
+http://localhost:8000/dashboard/index.html (or open the index.html file directly).
+
+## ⚙️ Dynamic Configuration (config.json)
+The system supports Hot-Reloading—updates to this file are applied instantly without restarting the server:
+
+agent_names: Map IP addresses to workers names.
+
+blacklist_ips: List of restricted IPs that trigger immediate security alerts.
+
+server: Host and port configuration for the UDP listener.
+
+## 🖥️ UI & Administrative Controls
+Interactive Filtering: Filter all charts and tables by specific Agent or custom Time Range (e.g., Last 15m, 24h, 1y).
+
+Reset Database: A built-in administrative button to wipe and rebuild the database schema. Includes a safety confirmation dialog to prevent accidental data loss.
+
+Professional UI: Rounded "capsule" filter box, responsive grid layout, and custom-designed scrollbars.
