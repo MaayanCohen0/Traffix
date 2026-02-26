@@ -1,6 +1,6 @@
 # 🛡️ TRAFFIX: Real-Time Network Security & Traffic Monitor
 
-[cite_start]**Traffix** is a high-performance, distributed network monitoring system designed for deep visibility into endpoint traffic. [cite_start]It features a lightweight Python-based **Agent** for packet sniffing and a centralized **FastAPI Manager** for real-time analysis, security alerting, and interactive visualization.
+**Traffix** is a high-performance, distributed network monitoring system designed for deep visibility into endpoint traffic. It features a lightweight Python-based **Agent** for packet sniffing and a centralized **FastAPI Manager** for real-time analysis, security alerting, and interactive visualization.
 
 
 
@@ -9,18 +9,18 @@
 ## 🚀 Key Features
 
 ### 1. **Live Traffic Analysis**
-* [cite_start]**Real-time Streaming:** Packets are captured and broadcasted instantly to the dashboard via WebSockets.
-* [cite_start]**Process Mapping:** Automatically identifies which local software (e.g., Chrome, Discord) is generating specific network traffic using `psutil`.
+**Real-time Streaming:** Packets are captured and broadcasted instantly to the dashboard via WebSockets.
+**Process Mapping:** Automatically identifies which local software (e.g., Chrome, Discord) is generating specific network traffic using `psutil`.
 
 ### 2. **Advanced Security Detection**
-* [cite_start]**Port Scan Identification:** Heuristic engine that detects sequential port access patterns to identify scanning attempts.
-* [cite_start]**Dynamic Blacklisting:** Real-time alerts when an internal agent communicates with known malicious IPs defined in `config.json`.
-* [cite_start]**Security Banners:** Instant visual alerts on the dashboard for critical security events.
+**Port Scan Identification:** Heuristic engine that detects sequential port access patterns to identify scanning attempts.
+**Dynamic Blacklisting:** Real-time alerts when an internal agent communicates with known malicious IPs defined in `config.json`.
+**Security Banners:** Instant visual alerts on the dashboard for critical security events.
 
 ### 3. **Geographical & Forensic Intelligence**
-* [cite_start]**Interactive Map:** Live Leaflet.js map showing geographical destinations of outgoing traffic using dark-mode aesthetics.
-* [cite_start]**Granular Filtering:** Investigate incidents using time-based filters (15m to 1y) powered by optimized PostgreSQL indexing.
-* [cite_start]**Bandwidth Monitoring:** Visual breakdown of data consumption (MB) per application.
+**Interactive Map:** Live Leaflet.js map showing geographical destinations of outgoing traffic using dark-mode aesthetics.
+**Granular Filtering:** Investigate incidents using time-based filters (15m to 1y) powered by optimized PostgreSQL indexing.
+**Bandwidth Monitoring:** Visual breakdown of data consumption (MB) per application.
 
 ---
 
@@ -28,19 +28,18 @@
 
 
 
-* [cite_start]**Backend:** FastAPI (Python 3.12) with asynchronous WebSocket broadcasting.
-* [cite_start]**Agent:** Scapy for low-level packet sniffing and multi-threading for non-blocking processing.
-* **Database:** PostgreSQL with SQLAlchemy ORM. [cite_start]Optimized with **thread-locks** to prevent race conditions during DB resets.
-* [cite_start]**Frontend:** Modern Dark-Mode UI using Chart.js, Leaflet.js, and Vanilla JavaScript.
+**Backend:** FastAPI (Python 3.12) with asynchronous WebSocket broadcasting.
+**Agent:** Scapy for low-level packet sniffing and multi-threading for non-blocking processing.
+**Database:** PostgreSQL with SQLAlchemy ORM. Optimized with **thread-locks** to prevent race conditions during DB resets.
+**Frontend:** Modern Dark-Mode UI using Chart.js, Leaflet.js, and Vanilla JavaScript.
 
----
 
 ## 🛠️ Installation & Setup
 
 ### Prerequisites
-* [cite_start]**Python 3.12+** 
-* [cite_start]**PostgreSQL Server** 
-* [cite_start]**Npcap** (Required for Windows users to enable Scapy sniffing) 
+**Python 3.12+** 
+**PostgreSQL Server** 
+**Npcap** (Required for Windows users to enable Scapy sniffing) 
 
 ### 1. Clone the Repository
 ```bash
